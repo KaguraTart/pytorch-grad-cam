@@ -2,7 +2,8 @@ import argparse
 import cv2
 import numpy as np
 import torch
-
+import os,sys
+sys.path.append(r"F:\大学\MTFwiki\pytorch-grad-cam")
 from pytorch_grad_cam import GradCAM, \
     ScoreCAM, \
     GradCAMPlusPlus, \
@@ -99,7 +100,7 @@ if __name__ == '__main__':
                                use_cuda=args.use_cuda,
                                reshape_transform=reshape_transform)
 
-    rgb_img = cv2.imread(args.image_path, 1)[:, :, ::-1]
+    rgb_img = cv2.imread(r"usage_examples\DJI_0191.JPG", 1)[:, :, ::-1]
     rgb_img = cv2.resize(rgb_img, (224, 224))
     rgb_img = np.float32(rgb_img) / 255
     input_tensor = preprocess_image(rgb_img, mean=[0.5, 0.5, 0.5],
@@ -122,4 +123,4 @@ if __name__ == '__main__':
     grayscale_cam = grayscale_cam[0, :]
 
     cam_image = show_cam_on_image(rgb_img, grayscale_cam)
-    cv2.imwrite(f'{args.method}_cam.jpg', cam_image)
+    cv2.imwrite(f'{args.method}_cam3.jpg', cam_image)

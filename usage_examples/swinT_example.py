@@ -3,6 +3,8 @@ import cv2
 import numpy as np
 import torch
 import timm
+import os,sys
+sys.path.append(r"F:\大学\MTFwiki\pytorch-grad-cam")
 
 from pytorch_grad_cam import GradCAM, \
     ScoreCAM, \
@@ -121,4 +123,4 @@ if __name__ == '__main__':
     grayscale_cam = grayscale_cam[0, :]
 
     cam_image = show_cam_on_image(rgb_img, grayscale_cam)
-    cv2.imwrite(f'{args.method}_cam.jpg', cam_image)
+    cv2.imwrite(f'{args.method}_cam4.jpg', cam_image)
