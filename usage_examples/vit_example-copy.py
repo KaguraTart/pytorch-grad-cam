@@ -102,7 +102,7 @@ if __name__ == '__main__':
                                 use_cuda=args.use_cuda,
                                 reshape_transform=reshape_transform)
         
-        rgb_img = cv2.imread("usage_examples\IMG_"+str(i)+".JPG", 1)[:, :, ::-1]
+        rgb_img = cv2.imread("1.png", 1)[:, :, ::-1]
         rgb_img = cv2.resize(rgb_img, (224, 224))
         rgb_img = np.float32(rgb_img) / 255
         input_tensor = preprocess_image(rgb_img, mean=[0.5, 0.5, 0.5],
